@@ -7,5 +7,5 @@
   align-items: center;
   height: 3532px;
   background-position: center center;
-  background-image: url('./bg.jpg');
+  background-image: url('/bg.jpg');
 }
