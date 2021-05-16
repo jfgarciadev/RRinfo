@@ -1,9 +1,9 @@
-html,
-body {
+html, body {
+  line-break: anywhere;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -12,5 +12,368 @@ a {
 }
 
 * {
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
   box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  width: 940px;
+}
+
+.full {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex1 {
+  flex: 1
+}
+
+.flex2 {
+  flex: 2
+}
+
+.flex25 {
+  flex: 2.5
+}
+
+.textCard {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.textCard p {
+  padding: 10px;
+  margin: 0px;
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: lighter;
+}
+
+.shadow {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+.shadow1 {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.textCenter {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 100;
+  margin: 0;
+  margin: 40px 0px;
+  float: left;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 100;
+  margin: 0;
+  margin: 15px 0px 5px 0;
+  float: left;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.subtitle2 {
+  font-size: 20px;
+  font-weight: 100;
+  margin: 0;
+  margin: 2px 0px;
+  color: #4e4e4e;
+  float: left;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.contatoImg {
+  border-radius: 10px;
+}
+
+.title strong, .subtitle strong {
+  color: #B40218
+}
+
+.title hr {
+  margin: 0 0 0 10px;
+  flex: 1
+}
+
+.topBar {
+  height: 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.bottom {
+  padding: 15px 0;
+  justify-content: center;
+}
+
+.bottom p {
+  margin: 0;
+  font-weight: 100;
+  font-size: 13px;
+  color: #fff
+}
+
+.menuBar {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(7px);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  width: 100%;
+}
+
+.menuBar .container {
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.menuBar .logo {
+  height: 160px;
+  width: 160px;
+  background-image: url('/logo.jfif');
+  background-size: 105%;
+  background-position: center center;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.espacador {
+  width: 100px
+}
+
+.menuLinks {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.middleBar {
+  height: 68px;
+  color: #fff;
+}
+
+.carrousel {
+  height: 590px;
+  width: 100%;
+  background-color: #fafafa;
+  background-image: url('/bg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #383838
+}
+
+.bottomDivider {
+  margin-top: 40px;
+  height: 4px;
+}
+
+.rodape {
+  background-image: url(/empresa.jpg);
+  background-position: center 20%;
+}
+
+.rodape .container {
+  padding: 20px 0px;
+}
+
+.rodapeTitle {
+  padding: 5px 40px;
+  width: fit-content;
+  font-weight: 200;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 10px
+}
+
+.whiteBlur {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.carrousel .content {
+  padding-top: 100px;
+}
+
+.justBet {
+  justify-content: space-between;
+}
+
+.carrousel .content ul {
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+  list-style: #fafafa;
+}
+
+.carrousel .content ul li {
+  font-size: 27px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.carrousel .content ul li::marker {
+  color: #B40218
+}
+
+hr.divider {
+  border: none;
+  height: 1.1px;
+  background: linear-gradient(90deg, rgba(134, 2, 24, 1) 0%, rgba(211, 17, 42, 1) 50%, rgba(134, 2, 24, 1) 100%);
+}
+
+.bgGrad {
+  background: linear-gradient(90deg, rgba(134, 2, 24, 1) 0%, rgba(211, 17, 42, 1) 50%, rgba(134, 2, 24, 1) 100%);
+}
+
+.servicesIcons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.servicesIcons div.iconContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.servicesIcons div.iconContainer span {
+  font-size: 30px;
+  font-weight: bolder;
+  color: #B40218;
+  text-align: center;
+}
+
+.sobre {
+  padding-bottom: 40px;
+  background-color: rgba(0, 0, 0, 0.04);
+  margin-top: 30px;
+}
+
+.bgGray {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.accordionBtn {
+  height: 40px;
+  color: #fff;
+  width: 290px;
+  margin-left: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.accordionOpen {
+  width: 290px;
+  margin-left: auto;
+  padding: 3px;
+  color: #4e4e4e;
+  height: fit-content;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.accordionClosed {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.borderNone {
+  border: none
+}
+
+.clear {
+  clear: both
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 306px;
+  color: #4e4e4e;
+  font-size: 13px;
+}
+
+.inputContainer input {
+  height: 30px
+}
+
+.inputContainerFull {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: #4e4e4e;
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+.inputContainerFull input, .inputContainerFull textarea {
+  resize: none;
+  height: 150px
+}
+
+.sobreHorario {
+  margin: 0
+}
+
+.rodape h6 {
+  margin: 0px 0 0px 0px;
+}
+
+.rodape ul, .rodape li, .rodape ul, .rodape li a, .rodape li a strong {
+  list-style: none;
+  padding: 0px;
+  margin: 1px;
+  font-weight: 400 !important;
 }
