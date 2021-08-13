@@ -1,9 +1,29 @@
 import Head from 'next/head'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaPhone, FaHeadset, FaShieldAlt, FaTools } from "react-icons/fa";
 //import styles from '../styles/Home.module.css'
 
-export default function Home() {
+const parseJSON = resp => (resp.json ? resp.json() : resp);
+const checkStatus = resp => {
+  if (resp.status >= 200 && resp.status < 300) {
+    return resp;
+  }
+  return parseJSON(resp).then(resp => {
+    throw resp;
+  });
+};
+const headers = {
+  'Content-Type': 'application/json',
+};
+
+
+function Home({ infos }) {
+
+
+
+  useEffect(() => {
+    console.log(infos)
+  }, [])
 
   const [accordionSobre, setAccordionSobre] = useState(0)
   return (
@@ -15,8 +35,12 @@ export default function Home() {
         </Head>
         <div className="bgGrad">
           <div className="container topBar">
-            <div className="">info1</div>
-            <div className=""><FaPhone color="#fff" fontSize="13px"></FaPhone> (16) 99715-3730</div>
+            <div className="">{infos.Header.info1}</div>
+            <div className="">
+              {
+                //<FaPhone color="#fff" fontSize="13px"></FaPhone>
+              }
+              {infos.Header.info2}</div>
           </div>
         </div>
         <div className="carrousel">
@@ -31,29 +55,22 @@ export default function Home() {
             </div>
           </div>
           <div className="container content">
-            <h1>O MELHOR EM</h1>
+            <h1>{infos.tituloServicos}</h1>
             <ul>
-              <li>
-                SERVIÇO 1
-            </li>
-              <hr className="divider" width="220px" align="left"></hr>
-              <li>
-                SERVIÇO 2
-            </li>
-              <hr className="divider" width="220px" align="left"></hr>
-              <li>
-                SERVIÇO 3
-            </li>
-              <hr className="divider" width="220px" align="left"></hr>
-              <li>
-                SERVIÇO 4
-            </li>
-              <hr className="divider" width="220px" align="left" ></hr>
+
+
+              {infos.services.map( (item, key) =>
+                <li key>
+                  {item.servico}
+                  <hr className="divider" width="220px" align="left"></hr>
+                </li>
+
+              )}
             </ul>
           </div>
         </div>
         <div className="shadow center bgGrad middleBar">
-          <h3>TRADIÇÃO E QUALIDADE A MAIS DE 5 ANOS NO MERCADO</h3>
+          <h3>{infos.mensagem}</h3>
         </div>
         <div className="container" id="lgpd">
           <h4 className="title">SUA EMPRESA ESTÁ PREPARADA PARA &nbsp; <strong> ERA DIGITAL?</strong> <span><hr className="divider" width="232px" ></hr></span></h4>
@@ -61,11 +78,11 @@ export default function Home() {
         <div className="container row" >
           <div className="flex25 textCard shadow1">
             <p>
-              Lorem ipsum dolor sit amet LGPD, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
+              {infos.lgpd.text}
+            </p>
           </div>
-          <div className="flex1">
-            <img src="./lgpd.png" alt="lgpd" title="lgpd" align="right"></img>
+          <div className="flex1 centerMobile">
+            <img src={"http://localhost:1337" + infos.lgpd.img.url} alt="lgpd" className="imgCenterMobile" title="lgpd" align="right" height="200px"></img>
           </div>
         </div>
 
@@ -102,7 +119,7 @@ export default function Home() {
           <div className="flex2 textCard shadow1">
             <p>
               Lorem ipsum dolor sit amet LGPD, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
+            </p>
           </div>
           <div className="flex1">
             <div className={accordionSobre == 0 ? "accordionBtn center bgGrad" : "accordionBtn center bgGray"} onClick={() => { setAccordionSobre(0) }} >MISSÃO</div>
@@ -118,9 +135,9 @@ export default function Home() {
         <div className="container" id="contato">
           <h4 className="title">CONTATO &nbsp; <strong> E LOCALIZAÇÃO</strong> <span><hr className="divider" width="555px" ></hr></span></h4>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3704.891198891524!2d-48.162929084437835!3d-21.78447150426379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b8f3ff467938c9%3A0x86c5347285f7793c!2zUiZSIFNvbHXDp8O1ZXMgZW0gVC5JIHwgUHJvdGXDp8OjbyBkZSBkYWRvcyB8IExHUEQ!5e0!3m2!1spt-BR!2sbr!4v1621183678385!5m2!1spt-BR!2sbr" width="100%" height="250" className="borderNone" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3704.891198891524!2d-48.162929084437835!3d-21.78447150426379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b8f3ff467938c9%3A0x86c5347285f7793c!2zUiZSIFNvbHXDp8O1ZXMgZW0gVC5JIHwgUHJvdGXDp8OjbyBkZSBkYWRvcyB8IExHUEQ!5e0!3m2!1spt-BR!2sbr!4v1621183678385!5m2!1spt-BR!2sbr" width="100%" height="250" className="borderNone" allowFullScreen="" loading="lazy"></iframe>
         <div className="container row" >
-          <div className="flex1 column">
+          <div className="flex1 column centerMobile">
             <h5 className="subtitle"><strong>LOCALIZAÇÃO</strong> </h5>
             <p className="sobreHorario">
               Av. Padre Antônio Cezarino, 1070 <br />Vila Xavier (Vila Xavier), Araraquara - SP <br /> 14810-142
@@ -149,7 +166,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="container">
+        <div className="container contato">
           <h4 className="title textCenter">ENTRE EM CONTATO &nbsp; <strong> CONOSCO!</strong></h4>
           <div className="clear"></div>
           <form>
@@ -178,7 +195,7 @@ export default function Home() {
       <div className="full rodape ">
         <div className="whiteBlur">
           <div className="container justBet row">
-            <div className="column">
+            <div className="column menuFt">
               <h6 className="rodapeTitle bgGrad">
                 MENU
               </h6>
@@ -198,16 +215,33 @@ export default function Home() {
       <div className="full bottom bgGrad">
         <div className="row justBet container">
           <div className="center">
-          <p>2021 - www.<strong>rrinformatica</strong>.com.br - todos os direitos reservados.</p>
+            <p>2021 - www.<strong>rrinformatica</strong>.com.br - todos os direitos reservados.</p>
           </div>
-          
+
           <div className="row center">
-          <p>Desenvolvido por: </p>
-          &nbsp; 
-          <img src="./jf.png" height="30px" width="30px"></img>
+            <p>Desenvolvido por: </p>
+            &nbsp;
+            <img src="./jf.png" height="30px" width="30px"></img>
           </div>
         </div>
       </div>
     </>
   )
 }
+
+
+Home.getInitialProps = async () => {
+  try {
+    const infos = await fetch('http://localhost:1337/inicio', {
+      method: 'GET',
+    })
+      .then(checkStatus)
+      .then(parseJSON);
+    return { infos };
+  } catch (errorCategories) {
+    return { errorCategories };
+  }
+};
+
+
+export default Home;

@@ -126,7 +126,7 @@ a {
 }
 
 .topBar {
-  height: 30px;
+  height: 100%;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -376,4 +376,114 @@ hr.divider {
   padding: 0px;
   margin: 1px;
   font-weight: 400 !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  hr.divider{
+   width:10px
+
+  }
+  .container{
+    width: 100vw;
+    display: flex;
+    justify-content:center;
+    text-align: center;
+  }
+
+  .row{
+    flex-direction: column;
+  }
+
+  .servicesIcons{
+    display: block;
+  }
+
+  .accordionBtn{
+    width: 100vw
+  }
+  .accordionOpen{
+    width: 100vw;
+  }
+
+  .textCard{
+    margin-bottom: 10px;
+  }
+
+  .title{
+    font-size:15px
+  }
+
+ .content{
+    display: block !important
+  }
+
+  .contato{
+    flex-direction: column;
+  }
+
+  .menuFt{
+    display: none
+  }
+
+  .subtitle, .subtitle2{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+
+  .centerMobile{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+  .imgCenterMobile{
+    float:unset;
+    align-self: center;
+  }
+  .inputContainer{
+    width: 100vw;
+  }
+
+  .iconContainer{
+    margin-bottom: 40px;
+  }
+
+  .menuBar .logo{
+    width: 100px;
+    height: 100px;
+    top: -10px
+  }
+
+  .menuBar .container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menuBar .container .menuLinks{
+    display: none 
+  }
+
+  .topBar{
+    justify-content:space-between;
+    padding: 0 10px+
+  }
+
+  .carrousel h1{
+    font-size:20px !important;
+    color: white;
+    text-shadow: 0 0 5px #383838 ;
+  }
+
+  .carrousel ul{
+    list-style: none;
+    color: white;
+    text-shadow: 0 0 5px #383838 ;
+  }
+
+  .carrousel ul li .divider{
+    display: none;
+  }
+  
 }
