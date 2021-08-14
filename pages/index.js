@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { FaPhone, FaHeadset, FaShieldAlt, FaTools } from "react-icons/fa";
 //import styles from '../styles/Home.module.css'
 
-const mongoUrl="mongodb+srv://jfdev:Juan19999@cluster0.jee9s.mongodb.net/rrinfo?retryWrites=true&w=majority"
+const mongoUrl = "mongodb+srv://jfdev:Juan19999@cluster0.jee9s.mongodb.net/rrinfo?retryWrites=true&w=majority"
 
 
 function Home({ data }) {
@@ -46,7 +46,7 @@ function Home({ data }) {
             <ul>
 
 
-              {data.main_infos.infos.map( (item, i) =>
+              {data.main_infos.infos.map((item, i) =>
                 <li key={i}>
                   {item}
                   <hr className="divider" width="220px" align="left"></hr>
@@ -218,17 +218,18 @@ function Home({ data }) {
 
 
 Home.getInitialProps = async () => {
-  mongoose.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true});
-  var connection = mongoose.connection;
+
   try {
-    const collection =  connection.db.collection("home");
+    await mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+    var connection = mongoose.connection;
+    const collection = await connection.db.collection("home");
     const data = await collection.find({}).toArray();
-    return {data: data[0]}
+    return { data: data[0] }
   } catch (error) {
     console.log(error)
   }
-  
-  
+
+
 
 };
 
