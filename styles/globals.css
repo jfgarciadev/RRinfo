@@ -240,6 +240,8 @@ a {
 
 .carrousel .content {
   padding-top: 100px;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(56, 56, 56, 0.605);
 }
 
 .justBet {
@@ -251,6 +253,7 @@ a {
   padding: 0;
   list-style-position: inside;
   list-style: #fafafa;
+  text-shadow: 0 0 5px rgba(56, 56, 56, 0.605);
 }
 
 .carrousel .content ul li {
@@ -382,7 +385,7 @@ hr.divider {
 @media only screen and (max-width: 940px) {
   /* For mobile phones: */
   hr.divider{
-   width:10px
+   display: none
 
   }
   .container{
@@ -453,7 +456,7 @@ hr.divider {
   .menuBar .logo{
     width: 100px;
     height: 100px;
-    top: -10px
+    top: -5px
   }
 
   .menuBar .container{

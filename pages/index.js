@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 import Head from 'next/head'
 import { useState, useEffect } from 'react';
-import { FaPhone, FaHeadset, FaShieldAlt, FaTools } from "react-icons/fa";
+import { FaPhone, FaHeadset, FaShieldAlt, FaTools, FACode, FaCode } from "react-icons/fa";
 //import styles from '../styles/Home.module.css'
 
 const mongoUrl = "mongodb+srv://jfdev:Juan19999@cluster0.jee9s.mongodb.net/rrinfo?retryWrites=true&w=majority"
@@ -92,8 +92,8 @@ function Home({ data }) {
               <span className="">MANUTENÇÃO</span>
             </div>
             <div className="iconContainer">
-              <FaHeadset className="icon" fontSize="140px" color="#B40218"></FaHeadset>
-              <span className="">SUPORTE</span>
+              <FaCode className="icon" fontSize="140px" color="#B40218"></FaCode>
+              <span className="">DESENVOLVIMENTO</span>
             </div>
           </div>
         </div>
@@ -105,16 +105,16 @@ function Home({ data }) {
         <div className="container row" >
           <div className="flex2 textCard shadow1">
             <p>
-              Lorem ipsum dolor sit amet LGPD, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              {data.quem_somos}
             </p>
           </div>
           <div className="flex1">
             <div className={accordionSobre == 0 ? "accordionBtn center bgGrad" : "accordionBtn center bgGray"} onClick={() => { setAccordionSobre(0) }} >MISSÃO</div>
-            <div className={accordionSobre == 0 ? "accordionOpen bgGray" : "accordionClosed"} >Lorem ipsum dolor sit amet LGPD, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore </div>
+            <div className={accordionSobre == 0 ? "accordionOpen bgGray" : "accordionClosed"} >{data.missao}</div>
             <div className={accordionSobre == 1 ? "accordionBtn center bgGrad" : "accordionBtn center bgGray"} onClick={() => { setAccordionSobre(1) }}>VISÃO</div>
-            <div className={accordionSobre == 1 ? "accordionOpen bgGray" : "accordionClosed"} >Lorem ipsum dolor sit amet LGPD, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore </div>
+            <div className={accordionSobre == 1 ? "accordionOpen bgGray" : "accordionClosed"} >{data.visao}</div>
             <div className={accordionSobre == 2 ? "accordionBtn center bgGrad" : "accordionBtn center bgGray"} onClick={() => { setAccordionSobre(2) }}>VALORES</div>
-            <div className={accordionSobre == 2 ? "accordionOpen bgGray" : "accordionClosed"} >Lorem ipsum dolor sit amet LGPD, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore </div>
+            <div className={accordionSobre == 2 ? "accordionOpen bgGray" : "accordionClosed"} >{data.valores}</div>
           </div>
         </div>
       </div>
@@ -194,6 +194,7 @@ function Home({ data }) {
               </ul>
             </div>
             <div className="center column">
+              Membro da:
               <img src="./anppd.png"></img>
             </div>
           </div>
