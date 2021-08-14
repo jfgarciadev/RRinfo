@@ -379,7 +379,7 @@ hr.divider {
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 940px) {
   /* For mobile phones: */
   hr.divider{
    width:10px

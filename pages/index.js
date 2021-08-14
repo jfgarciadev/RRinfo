@@ -1,28 +1,15 @@
+const mongoose = require('mongoose');
 import Head from 'next/head'
 import { useState, useEffect } from 'react';
 import { FaPhone, FaHeadset, FaShieldAlt, FaTools } from "react-icons/fa";
 //import styles from '../styles/Home.module.css'
 
-const parseJSON = resp => (resp.json ? resp.json() : resp);
-const checkStatus = resp => {
-  if (resp.status >= 200 && resp.status < 300) {
-    return resp;
-  }
-  return parseJSON(resp).then(resp => {
-    throw resp;
-  });
-};
-const headers = {
-  'Content-Type': 'application/json',
-};
+const mongoUrl="mongodb+srv://jfdev:Juan19999@cluster0.jee9s.mongodb.net/rrinfo?retryWrites=true&w=majority"
 
 
-function Home({ infos }) {
-
-
-
+function Home({ data }) {
   useEffect(() => {
-    console.log(infos)
+    console.log(data)
   }, [])
 
   const [accordionSobre, setAccordionSobre] = useState(0)
@@ -35,12 +22,12 @@ function Home({ infos }) {
         </Head>
         <div className="bgGrad">
           <div className="container topBar">
-            <div className="">{infos.Header.info1}</div>
+            <div className="">{data.header_1}</div>
             <div className="">
               {
                 //<FaPhone color="#fff" fontSize="13px"></FaPhone>
               }
-              {infos.Header.info2}</div>
+              {data.header_2}</div>
           </div>
         </div>
         <div className="carrousel">
@@ -55,13 +42,13 @@ function Home({ infos }) {
             </div>
           </div>
           <div className="container content">
-            <h1>{infos.tituloServicos}</h1>
+            <h1>{data.main_infos.title}</h1>
             <ul>
 
 
-              {infos.services.map( (item, key) =>
-                <li key>
-                  {item.servico}
+              {data.main_infos.infos.map( (item, i) =>
+                <li key={i}>
+                  {item}
                   <hr className="divider" width="220px" align="left"></hr>
                 </li>
 
@@ -70,7 +57,7 @@ function Home({ infos }) {
           </div>
         </div>
         <div className="shadow center bgGrad middleBar">
-          <h3>{infos.mensagem}</h3>
+          <h3>{data.middle_msg}</h3>
         </div>
         <div className="container" id="lgpd">
           <h4 className="title">SUA EMPRESA ESTÁ PREPARADA PARA &nbsp; <strong> ERA DIGITAL?</strong> <span><hr className="divider" width="232px" ></hr></span></h4>
@@ -78,11 +65,11 @@ function Home({ infos }) {
         <div className="container row" >
           <div className="flex25 textCard shadow1">
             <p>
-              {infos.lgpd.text}
+              {data.lgpd_text}
             </p>
           </div>
           <div className="flex1 centerMobile">
-            <img src={"http://localhost:1337" + infos.lgpd.img.url} alt="lgpd" className="imgCenterMobile" title="lgpd" align="right" height="200px"></img>
+            <img src={"/lgpd.png"} alt="lgpd" className="imgCenterMobile" title="lgpd" align="right" height="200px"></img>
           </div>
         </div>
 
@@ -231,16 +218,18 @@ function Home({ infos }) {
 
 
 Home.getInitialProps = async () => {
+  mongoose.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true});
+  var connection = mongoose.connection;
   try {
-    const infos = await fetch('http://localhost:1337/inicio', {
-      method: 'GET',
-    })
-      .then(checkStatus)
-      .then(parseJSON);
-    return { infos };
-  } catch (errorCategories) {
-    return { errorCategories };
+    const collection =  connection.db.collection("home");
+    const data = await collection.find({}).toArray();
+    return {data: data[0]}
+  } catch (error) {
+    console.log(error)
   }
+  
+  
+
 };
 
 
